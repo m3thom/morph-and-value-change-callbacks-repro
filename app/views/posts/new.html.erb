@@ -1,0 +1,12 @@
+<% content_for :title, "New post" %>
+
+<h1>New post</h1>
+
+<%= turbo_frame_tag 'post_form' do %>
+  <%= render "form", post: @post %>
+<% end %>
+<br>
+
+<div>
+  <%= link_to "Back to posts", posts_path %>
+</div>

@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```shell
+bundle install
 
-Things you may want to cover:
+rails db:create
+rails db:migrate
 
-* Ruby version
+yarn install
 
-* System dependencies
+bin/dev
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Steps to reproduce
+- Go to `posts/new`
+- In the simulate simple post draft form, try to select difference options cause post content to change to `["a", "b", "c"]`
+- Log at `app/javascript/controllers/post_controller.js#boolFromCombinationValueChanged` on appear in the console only one time.

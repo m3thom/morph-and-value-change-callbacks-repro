@@ -1,0 +1,38 @@
+<%= form_with(model: post,
+              url: posts_path,
+              method: :post,
+              data: {
+                controller: "post",
+              }) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.select :content,
+                    [
+                      ["A is false", "a"],
+                      ["B is true", "b"],
+                      ["C is false", "c"],
+                    ],
+                    {},
+                    onchange: "this.form.requestSubmit()"
+    %>
+  </div>
+  <div>Content: <%= form.object.content %></div>
+
+  <div>
+    <div data-post-target="someOther" data-post-bool-from-combination-value="<%= form.object.content == "b" %>">
+      Some other fields <%= form.object.content == "b" %>
+    </div>
+  </div>
+<% end %>
